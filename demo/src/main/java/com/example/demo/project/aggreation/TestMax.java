@@ -1,8 +1,11 @@
 package com.example.demo.project.aggreation;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -31,30 +34,47 @@ public class TestMax {
      * 测试聚合最大值
      * @param personList
      */
-    private void testMaxInteger(List<Person> personList) {
+    private static void testMaxInteger(List<Person> personList) {
         //条件表达式
-        if (true) {
+//        if (true) {
             for (Person person : personList) {
                 Optional<Integer> max = person.getPersonWorkList().stream()
-                        .map(PersonWork::getPersonWorkPracticeList)
-                        .flatMap(List::stream)
-                        .map(PersonWorkPractice::getWorkPracticeCost)
-                        .max(Comparator.naturalOrder());
+                        .map(PersonWork::getWorkCost)
+//                        .flatMap(List::stream)
+//                        .map(PersonWorkPractice::getWorkPracticeCost)
+                        .filter(Objects::nonNull)
+                        .min(Comparator.naturalOrder());
                 max.ifPresent(max1-> person.setMaxPersonWorkPracticeCost(max.get()));
 
             }
-        }
-        if(true){
-            //同实体的第n个汇总字段
-            for(Person person : personList){
-                person.getPersonWorkList().stream()
-                        .map(PersonWork::getWorkCost)
-                        .max(Comparator.naturalOrder());
-            }
-        }
-        //统一进行入库操作,一个实体只进行一次update
+//        }
+//        if(true){
+//            //同实体的第n个汇总字段
+//            for(Person person : personList){
+//                person.getPersonWorkList().stream()
+//                        .map(PersonWork::getWorkCost)
+//                        .max(Comparator.naturalOrder());
+//            }
+//        }
+//        //统一进行入库操作,一个实体只进行一次update
     }
 
+    public static void main(String[] args) {
+        List<Person> personList = new ArrayList<>();
+        Person person = new Person();
+        PersonWork personWork = new PersonWork();
+        personWork.setWorkCost(5);
+        PersonWork personWork1 = new PersonWork();
+        personWork1.setWorkCost(3);
+        person.setPersonWorkList(Arrays.asList(personWork, personWork1));
+        Person person1 = new Person();
+        PersonWork personWork2 = new PersonWork();
+        PersonWork personWork3 = new PersonWork();
+        person1.setPersonWorkList(Arrays.asList(personWork2, personWork3));
+        personList.add(person);
+        personList.add(person1);
+        testMaxInteger(personList);
+    }
     /**
      * 处理特殊的一对一场景
      *

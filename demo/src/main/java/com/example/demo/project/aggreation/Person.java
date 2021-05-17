@@ -18,6 +18,7 @@ public class Person {
     private Integer age;
     private Integer maxPersonWorkPracticeCost;
     private List<PersonWork> personWorkList;
+    private Long countPersonWork;
 
     private BigDecimal maxBigDecimal;
 }
