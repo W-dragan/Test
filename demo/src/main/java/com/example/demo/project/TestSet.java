@@ -43,7 +43,7 @@ public class TestSet {
 
         //List转set去重
         List<String> list = Arrays.asList("a", "a", "b");
-        Set<String> collect = list.stream().collect(Collectors.toSet());
+        Set<String> collect = new HashSet<>(list);
         System.out.println(collect.size());
     }
 }
