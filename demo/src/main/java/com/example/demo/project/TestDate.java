@@ -28,5 +28,9 @@ public class TestDate {
         String aa = "1.2435235";
         String substring = aa.substring(aa.indexOf(".")+1);
         System.out.println(substring);
+
+        String min = "-30";
+        String max = "30";
+        System.out.println(min.compareTo(max));
     }
 }
