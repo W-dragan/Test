@@ -12,6 +12,7 @@ import java.util.List;
  * @Date: 2021/6/4 14:47
  */
 public class Number94 {
+    //todo 第三种,空间复杂度为O（1）
     /**
      * 迭代
      * @param root
@@ -62,7 +63,7 @@ public class Number94 {
         right.val = 2;
         right.left = left;
         root.right = right;
-        List<Integer> list = number94.inorderTraversal(root);
+        List<Integer> list = number94.inorderTraversal1(root);
         System.out.println(list.toString());
     }
 }
