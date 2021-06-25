@@ -34,6 +34,11 @@ public class StockSpanner {
     }
 
     public int next(int price) {
+        return 0;
+    }
 
+    public static void main(String[] args) {
+        int i = Integer.bitCount(5);
+        System.out.println(i);
     }
 }
